@@ -1,4 +1,36 @@
-<h3>This lesson is not yet available</h3>
+<h3>Modules Definition</h3>
 
-<p>Use <code>lessons ()</code> to get the list of all lessons.
-Use <code>back ()</code> to return to the previous step.</p>
+<p>One of the programming <em>paradigm</em> supported by OCaml is the so called
+<em>modular programming</em>. Modules serve several purposes that we'll see along
+the way.</p>
+<!--<ul>
+<li>namespaces (a la C++);</li>
+<li>implementation hiding;</li>
+<li>having a set of functions/types depends on another set of functions/types (a la C++ templates);</li>
+</ul>-->
+
+<p>You define a new module with the <code>module Name = struct ... end</code>
+construct, where <code>Name</code> can be any capitalized identifier.  Any
+definition happening between the <code>struct</code> and <code>end</code>
+keywords will belong to the module.<p>
+
+<p>Here is an example of a module named <code>Point</code> with a few
+definitions:</p>
+
+<pre><code>module Point = struct
+  type point = int * int
+  let add (x1,y1) (x2,y2) = x1+x2, y1+y2
+  let norm (x,y) = x*x + y*y
+end
+</code></pre>
+
+<p>(Notice the absence of <code>;</code> separator between definitions)</p>
+
+<p>As you can see modules can be populated with type definitions (<code>type
+foo = ...</code>), value definitions (<code>let foo ... = ...</code> or
+<code>let rec foo ... = ...</code>), exception definitions (<code>exception Foo
+of string</code>) and they can also include other modules as well (<code>module
+Foo = ...</code>). Exactly the same as the top-level, which is indeed a
+module.</p>
+
+<p>Go ahead and try to define a new module named <code>Foo</code>!

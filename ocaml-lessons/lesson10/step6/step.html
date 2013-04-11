@@ -1,0 +1,23 @@
+<h3>Modules to hide implementation</h3>
+
+<p>When you request a module with <code>Number</code> signature, it's important that
+any modules that have <em>at least</em> a compliant <code>zero</code> and <code>add</code>
+definition fulfill the requirement. You don't want to reject modules with additional
+functions and types.</p>
+
+<p>That's why any module with <em>at least</em> the required definitions can by
+typed into a <code>Number</code>. Let's try:</p>
+
+<pre><code>module N2_raw = struct
+  include N1
+  let one = 1
+end</code></pre>
+
+<pre><code>module N2 : Number = N2_raw</code></pre>
+
+<p>Notice the difference between the signature of <code>N2_raw</code>
+and <code>N2</code>. Imagine you are given <code>N2</code>, how do you
+reach its <code>one</code> value?</p>
+
+<p>Try to reach <code>N2.one</code> before proceeding to <code>next()</code>
+step.</p>

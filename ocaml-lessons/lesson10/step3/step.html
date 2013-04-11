@@ -1,0 +1,26 @@
+<h3>Modules as Interfaces</h3>
+
+<p>One of the primary reason to use modules is to give an explicit type to a
+set of definitions (rather than to let the compiler infer the type). This has a
+number of advantages:</p>
+
+<ul>
+<li>it helps documenting your intension</li>
+<li>it helps design a program top-down (first the module signatures then the module implementations)</li>
+<li>it forces a third party module to comply to a given interface</li>
+</ul>
+
+<p>So let's get back to our <code>N1</code> module. A one liner solution to the exercice was:</p>
+
+<code>module N1 = struct let zero = 0 let add = (+) end</code>
+
+<p>To check that it indeed comply with the <code>Number</code> module type we can specify
+its type the same way we'd do for any other value:</p>
+
+<code>module N1 : Number = struct let zero = 0 let add = (+) end</code>
+
+<p>Notice the top-level output is much easier to read since <code>N1</code> is
+known to be a <code>Number</code>.
+
+<p>Naming the type of a set of definitions is not the only use for modules, though.
+Now type <code>next ()</code> to discover another one.</p>

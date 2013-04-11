@@ -1,0 +1,29 @@
+<h3>Modules as Namespaces (2)</h3>
+
+<p>Definition order in a module is significant: they are executed
+in the order they are met, and new binding to previously bound names
+overwrite previous definitions.</p>
+
+<p>for example, this module has only one definition for
+<code>x</code>, which value is 2:</p>
+
+<pre><code>module X = struct
+  let x = 1
+  let x = x+1
+end</code></pre>
+
+<p>Notice, however, that you are <b>not</b> allowed to redefine a type:</p>
+
+<pre><code>module Err = struct
+  type t = int
+  type t = string
+end</code></pre>
+
+<p>As an exercise, try to fix this "optimization" of <code>N1</code>
+(you need only two words)&nbsp;:<p>
+
+<pre><code>module N2 : Number = struct
+  let add a b = if a = zero then b else add a b
+end</code></pre>
+
+<p>Run <code>next ()</code> once you are satisfied with your result.</p>

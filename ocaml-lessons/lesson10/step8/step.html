@@ -1,0 +1,18 @@
+<h3>Modules to hide type implementation (3)</h3>
+
+<p>In addition to hide definitions, applying a module signature to a module
+allows to hide a type definition while its declaration remain present,
+and thus usable in the following definitions.</p>
+
+<p>Let's see an example:</p>
+
+<pre><code>module type Point = sig
+  type t
+  val origin : t
+  val unit_x : t
+  val unit_y : t
+  val add : t -> t -> t
+  val plot : t -> unit
+end</code></pre>
+
+TODO

@@ -1,0 +1,44 @@
+<h3>Modules as Templates</h3>
+
+<p>A function is a mechanism to make some piece of code reusable with
+different values. In the same spirit, a <em>functor</em> is a mechanism
+to make a set of definitions reusable with different types. In other
+words, functors are functions from modules to modules.</p>
+
+<p>This is quite similar to C++ templates, only (much) more powerful, faster
+to compile, easier to use, but slightly less efficient.</p>
+
+<p>Suppose we'd like to build:</p>
+
+<pre><code>module type Line = sig
+  type point
+  type t = point * point
+  val make : point -> point -> t
+  val draw : t -> unit
+end
+</code></pre>
+
+<p>To implement it using the Bresenham algorithm we only need to be able to draw a point
+and move it from one unit distance.
+Other than that, a Line module should work with whatever implementation of a Point.</p>
+
+<p>So let's say the <code>Point</code> signature is:</p>
+
+<pre><code>module type Point = sig
+  type t
+  val unit_x : t
+  val unit_y : t
+  val add : t -> t -> t
+  val plot : t -> unit
+end</code></pre>
+
+<p>Then, we are allowed to write:</p>
+
+<pre><code>module Line_bresenham (P : Point) = struct
+  type point = P.t
+  type t = point * point
+  let make p1 p2 = p1, p2
+  let draw (p1,p2) =
+    ... P.plot ...
+end
+</code></pre>

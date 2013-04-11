@@ -1,0 +1,14 @@
+<h3>Modules to hide implementation (2)</h3>
+
+<p>Of course you can't reach <code>N2.one</code> since <code>N2</code> is a
+<code>Number</code> and <code>Number</code> have no such value. What robust would
+that be if a module which is only given a <code>Number</code> could try to
+guess members that are not in the interface?</p>
+
+<p>So the lesson is: <en>Two completely distinct implementations of a module type
+are interchangeable once they are forced into this module type</em>. Other members
+these modules might have are hidden definitively and no program can tell the one
+from the other.</p>
+
+<p>Now that we have good confidence with the module type mechanism, let's see
+in the <code>next ()</code> step how to compose modules.

@@ -1,0 +1,2 @@
+fun input output ->
+  false

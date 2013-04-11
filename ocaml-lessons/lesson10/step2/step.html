@@ -1,0 +1,23 @@
+<h3>Module Types</h3>
+
+<p>You should have noticed by now that the top-level outputs the type of
+defined modules as it does for simpler values. The type of your <em>Foo</em>
+module was, unsurprisingly, the set of types of what you put in it, written
+between <code>sig ... end</code> keywords, with <code>val</code> to declare the
+name and type of included values inplace of <code>let</code>.</p>
+
+<p><em>hint: to inspect a module from the top-level copy it into a new module; try
+for instance: <code>module X = String</code>.</em></p>
+
+<p>As you can name custom types, you can also name custom module types, using
+this syntax: <code>module type TypeName = sig ... end</code>.</p>
+
+<p>If you know C, you can think of OCaml modules as C compilation units and
+of OCaml module types as C header files (except of course that modules are
+much more powerful as we will see).</p>
+
+<p>Now, as an exercise, let's try to define a module <code>N1</code> which type is:</p>
+<pre><code>module type Number = sig
+  val zero : int
+  val add : int -> int -> int
+end</code></pre>

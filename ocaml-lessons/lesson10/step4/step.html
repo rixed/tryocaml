@@ -1,0 +1,23 @@
+<h3>Modules as Namespaces</h3>
+
+<p>To reach a definition in module <code>Foo</code>, you have to either:</p>
+<ul>
+<li><code>open Foo</code> - then all definitions of <code>Foo</code> will be
+reachable at the expense of polluting your namespace;</li>
+<li>prepend the definition name with <code>Foo.</code>, which may soon become
+tiresome.</li>
+<li>rename it with a shorter name with <code>let module F = Foo in ...</code>, then
+prepend <code>F.</code>;</li>
+<li>locally open it, using <code>let open Foo in ...</code> or <code>Foo.(...)</code>,
+if you use OCaml &gt;= 3.12</li>
+<li>copy all it's definitions in your current module, using <code>include Foo</code>;</li>
+</ul>
+
+<p>Some modules, using well chosen unique names, are designed to be opened,
+while others, using well chosen generic names, are designed to be used with
+full names, which is equally good. Of course, modules from the real life tends
+to fall somewhere in between :-)</p>
+
+<p>Try to use your <code>zero</code> and <code>add</code> definitions from
+your <code>N1</code> modules and see what style you prefer. Notice, however,
+that once a module has been opened it can't be closed anymore.</p>
